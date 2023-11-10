@@ -1,7 +1,7 @@
 <template>
   <div class="Robot">
     <div class="main-container">
-      <ProgramHeader text="Program" />
+      <ProgramHeader text="Program" @open-drawer="openDrawer"/>
       <div class="text-input">
         <TextInputComponent text="Name" />
       </div>
@@ -18,8 +18,44 @@
         <DropZoneButtons first_button_text="Cancel" second_button_text="Save" />
       </div>
     </div>
+    <ProgramDrawer :isOpen="isDrawerOpen" @close-drawer="closeDrawer" />
   </div>
 </template>
+
+<script>
+import ProgramHeader from "../../node_modules/dynamic-tree-plugin/src/components/ProgramHeader.vue";
+import ProgramDrawer from "@/components/ProgramDrawer.vue";
+
+export default {
+  components: {
+    ProgramHeader,
+    ProgramDrawer,
+  },
+  data() {
+    return {
+      // Use a data property for two-way binding
+      drawerOpen: this.$store.state.isDrawerOpen,
+    };
+  },
+  computed: {
+    isDrawerOpen: {
+      get() {
+        return this.drawerOpen;
+      },
+      set(value) {
+        // Use a setter to update the store state
+        this.$store.dispatch('toggleDrawer', value);
+      },
+    },
+  },
+  methods: {
+    closeDrawer() {
+      // You can still use methods to handle closing
+      this.isDrawerOpen = false; // This will trigger the setter
+    },
+  },
+};
+</script>
 
 <style scoped>
 .Robot {
