@@ -18,18 +18,22 @@
         <DropZoneButtons first_button_text="Cancel" second_button_text="Save" />
       </div>
     </div>
-    <ProgramDrawer :isOpen="isDrawerOpen" @close-drawer="closeDrawer" />
+    <div class="drag-zone">
+      <div class="drag-contents">
+        <ProgramHeader text="ITEMS"></ProgramHeader>
+        <DragZone :isOpen="isDrawerOpen" @close-drawer="closeDrawer" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ProgramHeader from "../../node_modules/dynamic-tree-plugin/src/components/ProgramHeader.vue";
-import ProgramDrawer from "@/components/ProgramDrawer.vue";
+import DragZone from './DragZone.vue';
+
 
 export default {
   components: {
-    ProgramHeader,
-    ProgramDrawer,
+    DragZone
   },
   data() {
     return {
@@ -41,36 +45,38 @@ export default {
       this.isDrawerOpen = false;
     },
     customClickAction() {
-      // Your custom click action for the image
-      console.log("Image clicked in the main project");
-      // You can add more functionality here as needed
-      this.isDrawerOpen = !this.isDrawerOpen; // Toggle the drawer state
+      this.isDrawerOpen = !this.isDrawerOpen;
+      console.log(this.isDrawerOpen);
     },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .Robot {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Set min-height to 100% of the viewport height */
-  background-color: #ecf0f3;
+  flex-direction: row;
 }
+
 
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   max-width: 1200px;
   background-color: #ecf0f3;
   border: 1px solid #ccc;
   height: 100vh;
+  // position: relative; /* Set position relative for children with absolute or fixed positioning */
 }
+
+.drag-zone {
+  width: 50%;
+}
+
 .flex-grow {
-  flex: 1; /* Make the ComponentDropZone grow to fill the available vertical space */
-  min-height: 0; /* Allow the ComponentDropZone to shrink if necessary */
+  flex: 1;
+  min-height: 0;
 }
 
 h3 {
@@ -97,4 +103,6 @@ a {
 
 .text-input {
   padding: 12px;
-}</style>
+}
+</style>
+
