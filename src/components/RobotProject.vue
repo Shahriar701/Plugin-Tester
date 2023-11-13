@@ -1,7 +1,7 @@
 <template>
   <div class="Robot">
     <div class="main-container">
-      <ProgramHeader text="Program" @open-drawer="openDrawer"/>
+      <ProgramHeader text="Program" :custom-click-action="customClickAction" />
       <div class="text-input">
         <TextInputComponent text="Name" />
       </div>
@@ -33,25 +33,18 @@ export default {
   },
   data() {
     return {
-      // Use a data property for two-way binding
-      drawerOpen: this.$store.state.isDrawerOpen,
+      isDrawerOpen: false,
     };
-  },
-  computed: {
-    isDrawerOpen: {
-      get() {
-        return this.drawerOpen;
-      },
-      set(value) {
-        // Use a setter to update the store state
-        this.$store.dispatch('toggleDrawer', value);
-      },
-    },
   },
   methods: {
     closeDrawer() {
-      // You can still use methods to handle closing
-      this.isDrawerOpen = false; // This will trigger the setter
+      this.isDrawerOpen = false;
+    },
+    customClickAction() {
+      // Your custom click action for the image
+      console.log("Image clicked in the main project");
+      // You can add more functionality here as needed
+      this.isDrawerOpen = !this.isDrawerOpen; // Toggle the drawer state
     },
   },
 };
