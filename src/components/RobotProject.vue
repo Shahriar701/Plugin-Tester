@@ -1,7 +1,11 @@
 <template>
   <div class="Robot">
     <div class="main-container">
-      <ProgramHeader text="Program" :custom-click-action="customClickAction" />
+      <ProgramHeader text="Program" 
+      :custom-click-action="customClickAction" 
+      :programIcon="programIcon"
+      :expandIcon="expandIcon"
+      :programs="programs"/>
       <div class="text-input">
         <TextInputComponent text="Name" />
       </div>
@@ -29,6 +33,8 @@
 
 <script>
 import DragZone from './DragZone.vue';
+import programIcon from '../assets/programIcon.svg';
+import expandIcon from '../assets/expandIcon.svg'
 
 
 export default {
@@ -38,6 +44,15 @@ export default {
   data() {
     return {
       isDrawerOpen: false,
+      programIcon: programIcon,
+      expandIcon: expandIcon,
+      programs: [
+        { text: "MoveJoint", customClickAction: "action1", programIcon, expandIcon },
+        { text: "MoveLinear", customClickAction: "action2", programIcon, expandIcon },
+        { text: "MoveCircular", customClickAction: "action3", programIcon, expandIcon },
+        { text: "MoveComposite", customClickAction: "action4", programIcon, expandIcon },
+        { text: "MoveRecordedPath", customClickAction: "action5", programIcon, expandIcon },
+      ],
     };
   },
   methods: {

@@ -1,24 +1,40 @@
 <template>
   <div class="drag-zone-scoped">
-    <!-- Tabs -->
     <div class="tabs">
       <div @click="activateTab(1)" :class="{ active: activeTab === 1 }">Tab 1</div>
       <div @click="activateTab(2)" :class="{ active: activeTab === 2 }">Tab 2</div>
       <div @click="activateTab(3)" :class="{ active: activeTab === 3 }">Tab 3</div>
     </div>
-
-    <!-- Tab Content -->
-    <div v-if="activeTab === 1">Tab 1 Content</div>
+    <div v-if="activeTab === 1">
+      <div v-for="(program, index) in programs" :key="index">
+        <ProgramHeader :text="program.text" :custom-click-action="program.customClickAction" 
+                       :programIcon="program.programIcon" :expandIcon="program.expandIcon" />
+      </div>
+    </div>
     <div v-if="activeTab === 2">Tab 2 Content</div>
     <div v-if="activeTab === 3">Tab 3 Content</div>
   </div>
 </template>
 
 <script>
+
+import programIcon from '../assets/27_dark.svg';
+import expandIcon from '../assets/expandIcon.svg'
+import ProgramHeader from '../../node_modules/dynamic-tree-plugin/src/components/ProgramHeader.vue';
+
 export default {
   data() {
     return {
       activeTab: 1,
+      programIcon: programIcon,
+      expandIcon: expandIcon,
+      // programList: [
+      //   { text: "MoveJoint", customClickAction: "action1", programIcon, expandIcon },
+      //   { text: "MoveLinear", customClickAction: "action2", programIcon, expandIcon },
+      //   { text: "MoveCircular", customClickAction: "action3", programIcon, expandIcon },
+      //   { text: "MoveComposite", customClickAction: "action4", programIcon, expandIcon },
+      //   { text: "MoveRecordedPath", customClickAction: "action5", programIcon, expandIcon },
+      // ],
     };
   },
   methods: {
@@ -28,6 +44,13 @@ export default {
   },
   props: {
     isOpen: Boolean,
+    programs: {
+      type: Array,
+      required: true,
+    },
+  },
+  components: {
+    ProgramHeader,
   },
 };
 </script>
