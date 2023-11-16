@@ -1,11 +1,13 @@
 <template>
   <div class="Robot">
     <div class="main-container">
-      <ProgramHeader text="Program" 
-      :custom-click-action="customClickAction" 
-      :programIcon="programIcon"
-      :expandIcon="expandIcon"
-      :programs="programs"/>
+      <ProgramHeader
+        text="Drop Zone"
+        :custom-click-action="customClickAction"
+        :programIcon="programIcon"
+        :expandIcon="expandIcon"
+        :programs="programs"
+      />
       <div class="text-input">
         <TextInputComponent text="Name" />
       </div>
@@ -24,7 +26,13 @@
     </div>
     <div class="drag-zone">
       <div class="drag-contents">
-        <ProgramHeader text="ITEMS"></ProgramHeader>
+        <ProgramHeader
+          text="Drag Zone"
+          :custom-click-action="customClickAction"
+          :programIcon="programIcon"
+          :expandIcon="expandIcon"
+          :programs="programs"
+        ></ProgramHeader>
         <DragZone :isOpen="isDrawerOpen" @close-drawer="closeDrawer" />
       </div>
     </div>
@@ -32,92 +40,89 @@
 </template>
 
 <script>
-import DragZone from './DragZone.vue';
-import programIcon from '../assets/programIcon.svg';
-import expandIcon from '../assets/expandIcon.svg'
+  import DragZone from "./DragZone.vue";
+  import programIcon from "../assets/programIcon.svg";
+  import expandIcon from "../assets/expandIcon.svg";
 
-
-export default {
-  components: {
-    DragZone
-  },
-  data() {
-    return {
-      isDrawerOpen: false,
-      programIcon: programIcon,
-      expandIcon: expandIcon,
-      programs: [
-        { text: "MoveJoint", customClickAction: "action1", programIcon, expandIcon },
-        { text: "MoveLinear", customClickAction: "action2", programIcon, expandIcon },
-        { text: "MoveCircular", customClickAction: "action3", programIcon, expandIcon },
-        { text: "MoveComposite", customClickAction: "action4", programIcon, expandIcon },
-        { text: "MoveRecordedPath", customClickAction: "action5", programIcon, expandIcon },
-      ],
-    };
-  },
-  methods: {
-    closeDrawer() {
-      this.isDrawerOpen = false;
+  export default {
+    components: {
+      DragZone,
     },
-    customClickAction() {
-      this.isDrawerOpen = !this.isDrawerOpen;
-      console.log(this.isDrawerOpen);
+    data() {
+      return {
+        isDrawerOpen: false,
+        programIcon: programIcon,
+        expandIcon: expandIcon,
+        // programs: [
+        //   { text: "MoveJoint", customClickAction: "action1", programIcon, expandIcon },
+        //   { text: "MoveLinear", customClickAction: "action2", programIcon, expandIcon },
+        //   { text: "MoveCircular", customClickAction: "action3", programIcon, expandIcon },
+        //   { text: "MoveComposite", customClickAction: "action4", programIcon, expandIcon },
+        //   { text: "MoveRecordedPath", customClickAction: "action5", programIcon, expandIcon },
+        // ],
+      };
     },
-  },
-};
+    methods: {
+      closeDrawer() {
+        this.isDrawerOpen = false;
+      },
+      customClickAction() {
+        this.isDrawerOpen = !this.isDrawerOpen;
+        console.log(this.isDrawerOpen);
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-.Robot {
-  display: flex;
-  flex-direction: row;
-}
+  .Robot {
+    display: flex;
+    flex-direction: row;
+  }
 
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 1200px;
+    background-color: #ecf0f3;
+    border: 1px solid #ccc;
+    height: 100vh;
+    // position: relative; /* Set position relative for children with absolute or fixed positioning */
+  }
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  max-width: 1200px;
-  background-color: #ecf0f3;
-  border: 1px solid #ccc;
-  height: 100vh;
-  // position: relative; /* Set position relative for children with absolute or fixed positioning */
-}
+  .drag-zone {
+    width: 50%;
+  }
 
-.drag-zone {
-  width: 50%;
-}
+  .flex-grow {
+    flex: 1;
+    min-height: 0;
+  }
 
-.flex-grow {
-  flex: 1;
-  min-height: 0;
-}
+  h3 {
+    margin: 40px 0 0;
+  }
 
-h3 {
-  margin: 40px 0 0;
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  a {
+    color: #42b983;
+  }
 
-a {
-  color: #42b983;
-}
+  .description-accordion {
+    padding: 12px;
+  }
 
-.description-accordion {
-  padding: 12px;
-}
-
-.text-input {
-  padding: 12px;
-}
+  .text-input {
+    padding: 12px;
+  }
 </style>
-
