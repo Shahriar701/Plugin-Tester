@@ -18,6 +18,7 @@
           :custom-click-action="program.customClickAction"
           :programIcon="program.programIcon"
           :expandIcon="program.expandIcon"
+          @move-to-drop-zone="moveToComponentDropZone(program)"
         />
       </div>
     </div>
@@ -37,48 +38,20 @@
         activeTab: 1,
         programIcon: programIcon,
         expandIcon: expandIcon,
-        programList: [
-          {
-            text: "MoveJoint",
-            customClickAction: "action1",
-            programIcon,
-            expandIcon,
-          },
-          {
-            text: "MoveLinear",
-            customClickAction: "action2",
-            programIcon,
-            expandIcon,
-          },
-          {
-            text: "MoveCircular",
-            customClickAction: "action3",
-            programIcon,
-            expandIcon,
-          },
-          {
-            text: "MoveComposite",
-            customClickAction: "action4",
-            programIcon,
-            expandIcon,
-          },
-          {
-            text: "MoveRecordedPath",
-            customClickAction: "action5",
-            programIcon,
-            expandIcon,
-          },
-        ],
       };
     },
     methods: {
       activateTab(tabNumber) {
         this.activeTab = tabNumber;
       },
+      moveToComponentDropZone(program) {
+        console.log("Move to ComponentDropZone:", program);
+        this.$emit("move-to-drop-zone", program);
+      },
     },
     props: {
       isOpen: Boolean,
-      // programs: Array,
+      programList: Array,
     },
     components: {
       ProgramHeader,
