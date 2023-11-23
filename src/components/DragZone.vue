@@ -27,16 +27,11 @@
 </template>
   
 <script>
-import programIcon from "../assets/27_dark.svg";
-import expandIcon from "../assets/expandIcon.svg";
-import ProgramHeader from "../../node_modules/dynamic-tree-plugin/src/components/ProgramHeader.vue";
 
 export default {
   data() {
     return {
       activeTab: 1,
-      programIcon: programIcon,
-      expandIcon: expandIcon,
     };
   },
   methods: {
@@ -59,9 +54,6 @@ export default {
   props: {
     programList: Array,
     program: Object,
-  },
-  components: {
-    ProgramHeader,
   },
 };
 </script>
