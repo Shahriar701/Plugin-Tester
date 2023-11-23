@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="Robot">
       <div class="dynamic-container">
-        <ProgramHeader text="Drop Zone" :leftIcon="leftIcon" :customClickAction="customClickAction" :rightIcon="rightIcon"
+        <ProgramHeaderComponent text="Drop Zone" :leftIcon="leftIcon" :customClickAction="customClickAction" :rightIcon="rightIcon"
             :leftIconBackgroundColor="leftIconBackgroundColor" />
         <component :is="currentComponent" v-bind="componentProps" />
         <div>
@@ -11,8 +11,8 @@
       </div>
       <div class="drag-zone">
         <div class="drag-contents">
-          <ProgramHeader text="Drag Zone" :customClickAction="customClickAction" :leftIcon="leftIcon"
-            :rightIcon="rightIcon" :leftIconBackgroundColor=leftIconBackgroundColor></ProgramHeader>
+          <ProgramHeaderComponent text="Drag Zone" :customClickAction="customClickAction" :leftIcon="leftIcon"
+            :rightIcon="rightIcon" :leftIconBackgroundColor=leftIconBackgroundColor></ProgramHeaderComponent>
           <DragZone :programList="programList" @load-json="(program) => loadJson(program)" />
         </div>
       </div>
@@ -56,12 +56,18 @@ export default {
               key: "name",
               type: "TextInputComponent",
               label: "Name",
-              hint: "Enter name.."
+              hint: "Enter name..",
+              header: "Name"
             },
             {
               key: "description",
               type: "TextAreaComponent",
               header: "Description"
+            },
+            {
+              key: "Header",
+              type: "ProgramHeaderComponent",
+              header: "Tools"
             },
             {
               key: "points",

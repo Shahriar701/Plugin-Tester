@@ -6,12 +6,9 @@
         <div class="description-accordion">
             <TextAreaComponent text="Description" />
         </div>
-        <div>
-            <DropZoneHeaderComponent />
-        </div>
         <div class="flex-grow">
-            <ComponentDropZone>
-            </ComponentDropZone>
+            <DropZoneComponent>
+            </DropZoneComponent>
         </div>
     </div>
 </template>
@@ -79,11 +76,10 @@ a {
     padding: 12px;
 }
 
-@media only screen and (max-width: 600px) {
-  .text-input,
-  .description-accordion {
+
+.text-input,
+.description-accordion {
     padding: 8px;
-  }
 }
 </style>
   

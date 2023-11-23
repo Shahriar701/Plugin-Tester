@@ -13,7 +13,7 @@
     </div>
     <div v-if="activeTab === 1">
       <div v-for="(program, index) in programList" :key="index">
-        <ProgramHeader :text="program.name" :customClickAction="() => customClickAction(program)" :leftIcon="loadIcon(program.left_icon)"
+        <ProgramHeaderComponent :text="program.name" :customClickAction="() => customClickAction(program)" :leftIcon="loadIcon(program.left_icon)"
           :rightIcon="loadIcon(program.right_icon)" :leftIconBackgroundColor = program.leftIconBackgroundColor />
       </div>
     </div>
