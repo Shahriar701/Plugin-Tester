@@ -46,8 +46,7 @@ export default {
       return require(`@/assets/${fileName}`);
     },
     customClickAction(program) {
-      this.isDrawerOpen = !this.isDrawerOpen;
-      console.log(this.isDrawerOpen);
+
       this.$emit('load-json', program)
     },
   },

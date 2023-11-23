@@ -1,13 +1,20 @@
 <template>
-  <div class="Robot">
-    <div class="dynamic-container">
-      <component :is="currentComponent" v-bind="componentProps" />
+  <div class="main-container">
+    <div class="Robot">
+      <div class="dynamic-container">
+        <ProgramHeader text="Drop Zone" :leftIcon="leftIcon" :customClickAction="customClickAction" :rightIcon="rightIcon"
+            :leftIconBackgroundColor="leftIconBackgroundColor" />
+        <component :is="currentComponent" v-bind="componentProps" />
+        <div>
+      <DropZoneButtons first_button_text="Cancel" second_button_text="Save" />
     </div>
-    <div class="drag-zone">
-      <div class="drag-contents">
-        <ProgramHeader text="Drag Zone" :customClickAction="customClickAction" :leftIcon="leftIcon" :rightIcon="rightIcon"
-          :leftIconBackgroundColor=leftIconBackgroundColor></ProgramHeader>
-        <DragZone :programList="programList" @load-json="(program) => loadJson(program)" />
+      </div>
+      <div class="drag-zone">
+        <div class="drag-contents">
+          <ProgramHeader text="Drag Zone" :customClickAction="customClickAction" :leftIcon="leftIcon"
+            :rightIcon="rightIcon" :leftIconBackgroundColor=leftIconBackgroundColor></ProgramHeader>
+          <DragZone :programList="programList" @load-json="(program) => loadJson(program)" />
+        </div>
       </div>
     </div>
   </div>
@@ -281,14 +288,12 @@ export default {
   methods: {
     customClickAction() {
       this.isDrawerOpen = !this.isDrawerOpen;
-      console.log(this.isDrawerOpen);
       this.currentComponent = DropZone
     },
     moveProgramToDropZone(programDetails) {
       this.programList.push(programDetails);
     },
     handleComponentAdded(componentList) {
-      console.log("Updated component list:", componentList);
       this.programList = componentList;
     },
     loadIcon(fileName) {
@@ -303,6 +308,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.main-container{
+  height: 100px;
+}
 .Robot {
   display: flex;
   flex-direction: row;
@@ -322,11 +331,6 @@ export default {
   width: 50%;
 }
 
-.flex-grow {
-  flex: 1;
-  min-height: 0;
-}
-
 h3 {
   margin: 40px 0 0;
 }
@@ -343,13 +347,5 @@ li {
 
 a {
   color: #42b983;
-}
-
-.description-accordion {
-  padding: 12px;
-}
-
-.text-input {
-  padding: 12px;
 }
 </style>

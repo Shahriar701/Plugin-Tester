@@ -1,12 +1,10 @@
 <template>
     <div class="drop-zone-scopped">
-        <ProgramHeader text="Drop Zone" :leftIcon="leftIcon" :customClickAction="customClickAction" :rightIcon="rightIcon"
-            :leftIconBackgroundColor="leftIconBackgroundColor" />
         <div class="text-input">
             <TextInputComponent text="Name" />
         </div>
         <div class="description-accordion">
-            <AccordionTextBoxComponent text="Description" />
+            <TextAreaComponent text="Description" />
         </div>
         <div>
             <DropZoneHeaderComponent />
@@ -14,9 +12,6 @@
         <div class="flex-grow">
             <ComponentDropZone>
             </ComponentDropZone>
-        </div>
-        <div>
-            <DropZoneButtons first_button_text="Cancel" second_button_text="Save" />
         </div>
     </div>
 </template>
@@ -55,6 +50,7 @@ export default {
 .flex-grow {
     flex: 1;
     min-height: 0;
+    height: 100vh;
 }
 
 h3 {
@@ -81,6 +77,13 @@ a {
 
 .text-input {
     padding: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-input,
+  .description-accordion {
+    padding: 8px;
+  }
 }
 </style>
   
