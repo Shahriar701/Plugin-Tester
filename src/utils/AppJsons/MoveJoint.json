@@ -1,0 +1,45 @@
+{
+    "name": "MOVEJOINT",
+    "icon": "move-joint.svg",
+    "payload": {
+      "name": "",
+      "description": "",
+      "points": [],
+      "speed": 50,
+      "acceleration": 50
+    },
+    "components": [
+      {
+        "key": "name",
+        "type": "TextInputComponent",
+        "label": "Name",
+        "hint": "Enter name.."
+      },
+      {
+        "key": "description",
+        "type": "TextAreaComponent",
+        "header": "Description"
+      },
+      {
+        "key": "points",
+        "type": "DropZoneComponent",
+        "header": "Points"
+      },
+      {
+        "key": "speed",
+        "type": "TextSliderComponent",
+        "prefix": "Speed",
+        "postfix": "%",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "key": "acceleration",
+        "type": "TextSliderComponent",
+        "prefix": "Acceleration",
+        "postfix": "%",
+        "min": 0,
+        "max": 100
+      }
+    ]
+  }
