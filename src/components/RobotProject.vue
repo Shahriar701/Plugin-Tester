@@ -2,8 +2,11 @@
   <div class="main-container">
     <div class="Robot">
       <div class="dynamic-container">
-        <ProgramHeaderComponent text="Drop Zone" :leftIcon="leftIcon" :customClickAction="customClickAction" :rightIcon="rightIcon"
-            :leftIconBackgroundColor="leftIconBackgroundColor" />
+        <ProgramHeaderComponent text="Drop Zone" 
+          :leftIcon="leftIcon" 
+          :customClickAction="customClickAction" 
+          :rightIcon="rightIcon"
+          :leftIconBackgroundColor="leftIconBackgroundColor" />
         <component :is="currentComponent" v-bind="componentProps" />
         <div>
       <DropZoneButtons first_button_text="Cancel" second_button_text="Save" />
@@ -92,198 +95,198 @@ export default {
             }
           ]
         },
-        {
-          name: "MoveLinear",
-          customClickAction: "customClickAction",
-          left_icon: "26_dark.svg",
-          right_icon: "drag.svg",
-          leftIconBackgroundColor: "#537190",
-          payload: {
-            name: "",
-            description: "",
-            points: [],
-            speed: 50,
-            cceleration: 50
-          },
-          components: [
-            {
-              key: "name",
-              type: "TextInputComponent",
-              label: "Name",
-              hint: "Enter name.."
-            },
-            {
-              key: "description",
-              type: "TextAreaComponent",
-              header: "Description"
-            },
-            {
-              key: "points",
-              type: "DropZoneComponent",
-              header: "Points"
-            },
-            {
-              key: "speed",
-              type: "TextSliderComponent",
-              prefix: "Speed",
-              postfix: "%",
-              min: 0,
-              max: 100
-            },
-            {
-              key: "acceleration",
-              type: "TextSliderComponent",
-              prefix: "Acceleration",
-              postfix: "%",
-              min: 0,
-              max: 100
-            }
-          ]
-        },
-        {
-          name: "MoveCircular",
-          customClickAction: "customClickAction",
-          left_icon: "icon_move_circular.svg",
-          right_icon: "drag.svg",
-          leftIconBackgroundColor: "#537190",
-          payload: {
-            name: "",
-            description: "",
-            points: [],
-            speed: 50,
-            cceleration: 50
-          },
-          components: [
-            {
-              key: "name",
-              type: "TextInputComponent",
-              label: "Name",
-              hint: "Enter name.."
-            },
-            {
-              key: "description",
-              type: "TextAreaComponent",
-              header: "Description"
-            },
-            {
-              key: "points",
-              type: "DropZoneComponent",
-              header: "Points"
-            },
-            {
-              key: "speed",
-              type: "TextSliderComponent",
-              prefix: "Speed",
-              postfix: "%",
-              min: 0,
-              max: 100
-            },
-            {
-              key: "acceleration",
-              type: "TextSliderComponent",
-              prefix: "Acceleration",
-              postfix: "%",
-              min: 0,
-              max: 100
-            }
-          ]
-        },
-        {
-          name: "MoveComposite",
-          customClickAction: "customClickAction",
-          left_icon: "icon_move_circular.svg",
-          right_icon: "drag.svg",
-          leftIconBackgroundColor: "#537190",
-          payload: {
-            name: "",
-            description: "",
-            points: [],
-            speed: 50,
-            cceleration: 50
-          },
-          components: [
-            {
-              key: "name",
-              type: "TextInputComponent",
-              label: "Name",
-              hint: "Enter name.."
-            },
-            {
-              key: "description",
-              type: "TextAreaComponent",
-              header: "Description"
-            },
-            {
-              key: "points",
-              type: "DropZoneComponent",
-              header: "Points"
-            },
-            {
-              key: "speed",
-              type: "TextSliderComponent",
-              prefix: "Speed",
-              postfix: "%",
-              min: 0,
-              max: 100
-            },
-            {
-              key: "acceleration",
-              type: "TextSliderComponent",
-              prefix: "Acceleration",
-              postfix: "%",
-              min: 0,
-              max: 100
-            }
-          ]
-        },
-        {
-          name: "MoveRecordedPath",
-          customClickAction: "customClickAction",
-          left_icon: "icon_recorded_path.svg",
-          right_icon: "drag.svg",
-          leftIconBackgroundColor: "#537190",
-          payload: {
-            name: "",
-            description: "",
-            points: [],
-            speed: 50,
-            cceleration: 50
-          },
-          components: [
-            {
-              key: "name",
-              type: "TextInputComponent",
-              label: "Name",
-              hint: "Enter name.."
-            },
-            {
-              key: "description",
-              type: "TextAreaComponent",
-              header: "Description"
-            },
-            {
-              key: "points",
-              type: "DropZoneComponent",
-              header: "Points"
-            },
-            {
-              key: "speed",
-              type: "TextSliderComponent",
-              prefix: "Speed",
-              postfix: "%",
-              min: 0,
-              max: 100
-            },
-            {
-              key: "acceleration",
-              type: "TextSliderComponent",
-              prefix: "Acceleration",
-              postfix: "%",
-              min: 0,
-              max: 100
-            }
-          ]
-        },
+        // {
+        //   name: "MoveLinear",
+        //   customClickAction: "customClickAction",
+        //   left_icon: "26_dark.svg",
+        //   right_icon: "drag.svg",
+        //   leftIconBackgroundColor: "#537190",
+        //   payload: {
+        //     name: "",
+        //     description: "",
+        //     points: [],
+        //     speed: 50,
+        //     cceleration: 50
+        //   },
+        //   components: [
+        //     {
+        //       key: "name",
+        //       type: "TextInputComponent",
+        //       label: "Name",
+        //       hint: "Enter name.."
+        //     },
+        //     {
+        //       key: "description",
+        //       type: "TextAreaComponent",
+        //       header: "Description"
+        //     },
+        //     {
+        //       key: "points",
+        //       type: "DropZoneComponent",
+        //       header: "Points"
+        //     },
+        //     {
+        //       key: "speed",
+        //       type: "TextSliderComponent",
+        //       prefix: "Speed",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     },
+        //     {
+        //       key: "acceleration",
+        //       type: "TextSliderComponent",
+        //       prefix: "Acceleration",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     }
+        //   ]
+        // },
+        // {
+        //   name: "MoveCircular",
+        //   customClickAction: "customClickAction",
+        //   left_icon: "icon_move_circular.svg",
+        //   right_icon: "drag.svg",
+        //   leftIconBackgroundColor: "#537190",
+        //   payload: {
+        //     name: "",
+        //     description: "",
+        //     points: [],
+        //     speed: 50,
+        //     cceleration: 50
+        //   },
+        //   components: [
+        //     {
+        //       key: "name",
+        //       type: "TextInputComponent",
+        //       label: "Name",
+        //       hint: "Enter name.."
+        //     },
+        //     {
+        //       key: "description",
+        //       type: "TextAreaComponent",
+        //       header: "Description"
+        //     },
+        //     {
+        //       key: "points",
+        //       type: "DropZoneComponent",
+        //       header: "Points"
+        //     },
+        //     {
+        //       key: "speed",
+        //       type: "TextSliderComponent",
+        //       prefix: "Speed",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     },
+        //     {
+        //       key: "acceleration",
+        //       type: "TextSliderComponent",
+        //       prefix: "Acceleration",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     }
+        //   ]
+        // },
+        // {
+        //   name: "MoveComposite",
+        //   customClickAction: "customClickAction",
+        //   left_icon: "icon_move_circular.svg",
+        //   right_icon: "drag.svg",
+        //   leftIconBackgroundColor: "#537190",
+        //   payload: {
+        //     name: "",
+        //     description: "",
+        //     points: [],
+        //     speed: 50,
+        //     cceleration: 50
+        //   },
+        //   components: [
+        //     {
+        //       key: "name",
+        //       type: "TextInputComponent",
+        //       label: "Name",
+        //       hint: "Enter name.."
+        //     },
+        //     {
+        //       key: "description",
+        //       type: "TextAreaComponent",
+        //       header: "Description"
+        //     },
+        //     {
+        //       key: "points",
+        //       type: "DropZoneComponent",
+        //       header: "Points"
+        //     },
+        //     {
+        //       key: "speed",
+        //       type: "TextSliderComponent",
+        //       prefix: "Speed",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     },
+        //     {
+        //       key: "acceleration",
+        //       type: "TextSliderComponent",
+        //       prefix: "Acceleration",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     }
+        //   ]
+        // },
+        // {
+        //   name: "MoveRecordedPath",
+        //   customClickAction: "customClickAction",
+        //   left_icon: "icon_recorded_path.svg",
+        //   right_icon: "drag.svg",
+        //   leftIconBackgroundColor: "#537190",
+        //   payload: {
+        //     name: "",
+        //     description: "",
+        //     points: [],
+        //     speed: 50,
+        //     cceleration: 50
+        //   },
+        //   components: [
+        //     {
+        //       key: "name",
+        //       type: "TextInputComponent",
+        //       label: "Name",
+        //       hint: "Enter name.."
+        //     },
+        //     {
+        //       key: "description",
+        //       type: "TextAreaComponent",
+        //       header: "Description"
+        //     },
+        //     {
+        //       key: "points",
+        //       type: "DropZoneComponent",
+        //       header: "Points"
+        //     },
+        //     {
+        //       key: "speed",
+        //       type: "TextSliderComponent",
+        //       prefix: "Speed",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     },
+        //     {
+        //       key: "acceleration",
+        //       type: "TextSliderComponent",
+        //       prefix: "Acceleration",
+        //       postfix: "%",
+        //       min: 0,
+        //       max: 100
+        //     }
+        //   ]
+        // },
       ],
       currentComponent: 'DropZone',
       componentProps: {
