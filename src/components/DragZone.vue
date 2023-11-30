@@ -13,8 +13,13 @@
     </div>
     <div v-if="activeTab === 1">
       <div v-for="(program, index) in programList" :key="index">
-        <ProgramHeaderComponent :text="program.name" :customClickAction="() => customClickAction(program)" :leftIcon="loadIcon(program.left_icon)"
-          :rightIcon="loadIcon(program.right_icon)" :leftIconBackgroundColor = program.leftIconBackgroundColor />
+        <ProgramHeaderComponent
+          :text="program.name"
+          :customClickAction="() => customClickAction(program)"
+          :leftIcon="loadIcon(program.left_icon)"
+          :rightIcon="loadIcon(program.right_icon)"
+          :leftIconBackgroundColor="program.leftIconBackgroundColor"
+        />
       </div>
     </div>
     <div v-if="activeTab === 2">
@@ -25,38 +30,50 @@
     </div>
   </div>
 </template>
-  
-<script>
 
+<script>
 export default {
   data() {
     return {
       activeTab: 1,
-    };
+      programHeaderDragProperties: {}
+    }
   },
   methods: {
     activateTab(tabNumber) {
-      this.activeTab = tabNumber;
+      this.activeTab = tabNumber
     },
     moveToComponentDropZone(program) {
-      this.$emit("move-to-drop-zone", program);
-      console.log("clicked worked");
+      this.$emit('move-to-drop-zone', program)
+      console.log('clicked worked')
     },
     loadIcon(fileName) {
-      return require(`@/assets/${fileName}`);
+      return require(`@/assets/${fileName}`)
     },
     customClickAction(program) {
-
       this.$emit('load-json', program)
     },
+
+    hasProgramHeaderComponent(components) {
+      return components.some(
+        component => component.type === 'ProgramHeaderComponent'
+      )
+    },
+
+    getProgramHeaderComponent(components) {
+      const programHeaderComponent = components.find(
+        component => component.type === 'ProgramHeaderComponent'
+      )
+      return programHeaderComponent ? programHeaderComponent.type : null
+    }
   },
   props: {
     programList: Array,
-    program: Object,
-  },
-};
+    program: Object
+  }
+}
 </script>
-  
+
 <style lang="scss" scoped>
 .drag-contents {
   display: flex;
@@ -85,5 +102,3 @@ export default {
   background-color: #fff;
 }
 </style>
-
-  
