@@ -14,6 +14,7 @@
       <div class="drag-zone">
         <div class="drag-contents">
           <ProgramHeaderComponent :properties="programHeaderDragProperties" />
+
           <DragZone
             :programList="programList"
             @load-json="program => loadJson(program)"
@@ -351,7 +352,8 @@ export default {
     }
   },
   methods: {
-    customClickAction() {
+    customClickAction(program) {
+      console.log('Custom click action received in RobotProject:', program)
       this.isDrawerOpen = !this.isDrawerOpen
       this.currentComponent = DropZone
     },

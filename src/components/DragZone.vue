@@ -14,7 +14,7 @@
     <div v-if="activeTab === 1">
       <div v-for="(program, index) in programList" :key="index">
         <ProgramHeaderComponent
-          :text="program.name"
+          :header="program.name"
           :customClickAction="() => customClickAction(program)"
           :leftIcon="loadIcon(program.left_icon)"
           :rightIcon="loadIcon(program.right_icon)"
@@ -35,8 +35,7 @@
 export default {
   data() {
     return {
-      activeTab: 1,
-      programHeaderDragProperties: {}
+      activeTab: 1
     }
   },
   methods: {
