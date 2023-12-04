@@ -3,7 +3,11 @@
     <div class="Robot">
       <div class="dynamic-container">
         <ProgramHeaderComponent :properties="programHeaderProperties" />
-        <component :is="currentComponent" v-bind="componentProps" />
+        <component
+          :is="currentComponent"
+          v-bind="componentProps"
+          :key="componentProps.form.id"
+        />
         <div>
           <DropZoneButtons
             first_button_text="Cancel"
@@ -41,23 +45,25 @@ export default {
       programList: [
         {
           name: 'MoveJoint',
-          left_icon: '26_dark.svg',
+          id: 'move-joint',
+          left_icon: '27_dark.svg',
           right_icon: 'drag.svg',
-          customClickAction: 'customClickAction',
           leftIconBackgroundColor: '#537190',
           payload: {
             name: '',
             description: '',
             points: [],
             speed: 50,
-            acceleration: 50
+            acceleration: 50,
+            blending: false
           },
           components: [
             {
               key: 'name',
               type: 'TextInputComponent',
               props: {
-                header: 'Tool'
+                label: 'Name',
+                hint: 'Enter name..'
               }
             },
             {
@@ -68,14 +74,269 @@ export default {
               }
             },
             {
-              key: 'Header',
-              type: 'ProgramHeaderComponent',
+              key: 'points',
+              type: 'DropZoneComponent',
               props: {
-                header: 'Drop Zone',
-                customClickAction: 'customClickAction',
-                left_icon: '26_dark.svg',
-                right_icon: 'drag.svg',
-                leftIconBackgroundColor: '#537190'
+                header: 'Points'
+              }
+            },
+            {
+              key: 'speed',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Speed',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            },
+            {
+              key: 'acceleration',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Acceleration',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            }
+          ]
+        },
+        {
+          name: 'MoveLinear',
+          id: 'move-linear',
+          left_icon: '26_dark.svg',
+          right_icon: 'drag.svg',
+          leftIconBackgroundColor: '#537190',
+          payload: {
+            name: '',
+            description: '',
+            points: [],
+            speed: 50,
+            acceleration: 50,
+            blending: false
+          },
+          components: [
+            {
+              key: 'name',
+              type: 'TextInputComponent',
+              props: {
+                label: 'Name',
+                hint: 'Enter name..'
+              }
+            },
+            {
+              key: 'description',
+              type: 'TextAreaComponent',
+              props: {
+                header: 'Description'
+              }
+            },
+            {
+              key: 'points',
+              type: 'DropZoneComponent',
+              props: {
+                header: 'Points'
+              }
+            },
+            {
+              key: 'speed',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Speed',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            },
+            {
+              key: 'acceleration',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Acceleration',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            },
+            {
+              key: 'blending',
+              type: 'CheckBoxComponent',
+              props: {
+                prefix: 'Blending',
+                hasChild: true,
+                childComponents: [
+                  {
+                    componentName: 'TextSliderComponent',
+                    props: {
+                      prefix: 'Blending Radius',
+                      postfix: 'mm',
+                      min: 0,
+                      max: 100
+                    }
+                  }
+                ]
+              },
+              children: [
+                {
+                  componentName: 'TextSliderComponent',
+                  props: {
+                    prefix: 'Blending Radius',
+                    postfix: 'mm',
+                    min: 0,
+                    max: 100
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'MoveCircular',
+          id: 'move-circular',
+          left_icon: 'icon_move_circular.svg',
+          right_icon: 'drag.svg',
+          leftIconBackgroundColor: '#537190',
+          payload: {
+            name: '',
+            description: '',
+            points: [],
+            speed: 50,
+            acceleration: 50,
+            blending: false
+          },
+          components: [
+            {
+              key: 'name',
+              type: 'TextInputComponent',
+              props: {
+                label: 'Name',
+                hint: 'Enter name..'
+              }
+            },
+            {
+              key: 'description',
+              type: 'TextAreaComponent',
+              props: {
+                header: 'Description'
+              }
+            },
+            {
+              key: 'points',
+              type: 'DropZoneComponent',
+              props: {
+                header: 'Points'
+              }
+            },
+            {
+              key: 'speed',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Speed',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            },
+            {
+              key: 'acceleration',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Acceleration',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            }
+          ]
+        },
+        {
+          name: 'MoveComposite',
+          id: 'move-composite',
+          left_icon: 'icon_move_circular.svg',
+          right_icon: 'drag.svg',
+          leftIconBackgroundColor: '#537190',
+          payload: {
+            name: '',
+            description: '',
+            points: [],
+            speed: 50,
+            acceleration: 50,
+            blending: false
+          },
+          components: [
+            {
+              key: 'name',
+              type: 'TextInputComponent',
+              props: {
+                label: 'Name',
+                hint: 'Enter name..'
+              }
+            },
+            {
+              key: 'description',
+              type: 'TextAreaComponent',
+              props: {
+                header: 'Description'
+              }
+            },
+            {
+              key: 'points',
+              type: 'DropZoneComponent',
+              props: {
+                header: 'Points'
+              }
+            },
+            {
+              key: 'speed',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Speed',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            },
+            {
+              key: 'acceleration',
+              type: 'TextSliderComponent',
+              props: {
+                prefix: 'Acceleration',
+                postfix: '%',
+                min: 0,
+                max: 100
+              }
+            }
+          ]
+        },
+        {
+          name: 'MoveRecordedPath',
+          id: 'move-recorded-path',
+          left_icon: 'icon_recorded_path.svg',
+          right_icon: 'drag.svg',
+          leftIconBackgroundColor: '#537190',
+          payload: {
+            name: '',
+            description: '',
+            points: [],
+            speed: 50,
+            acceleration: 50,
+            blending: false
+          },
+          components: [
+            {
+              key: 'name',
+              type: 'TextInputComponent',
+              props: {
+                label: 'Name',
+                hint: 'Enter name..'
+              }
+            },
+            {
+              key: 'description',
+              type: 'TextAreaComponent',
+              props: {
+                header: 'Description'
               }
             },
             {
@@ -107,244 +368,19 @@ export default {
             }
           ]
         }
-        // {
-        //   name: 'MoveLinear',
-        //   customClickAction: 'customClickAction',
-        //   left_icon: '26_dark.svg',
-        //   right_icon: 'drag.svg',
-        //   leftIconBackgroundColor: '#537190',
-        //   payload: {
-        //     name: '',
-        //     description: '',
-        //     points: [],
-        //     speed: 50,
-        //     acceleration: 50,
-        //     blending: false
-        //   },
-        //   components: [
-        //     {
-        //       key: 'name',
-        //       type: 'TextInputComponent',
-        //       props: {
-        //         label: 'Name',
-        //         hint: 'Enter name..'
-        //       }
-        //     },
-        //     {
-        //       key: 'description',
-        //       type: 'TextAreaComponent',
-        //       props: {
-        //         header: 'Description'
-        //       }
-        //     },
-        //     {
-        //       key: 'points',
-        //       type: 'DropZoneComponent',
-        //       props: {
-        //         header: 'Points'
-        //       }
-        //     },
-        //     {
-        //       key: 'speed',
-        //       type: 'TextSliderComponent',
-        //       props: {
-        //         prefix: 'Speed',
-        //         postfix: '%',
-        //         min: 0,
-        //         max: 100
-        //       }
-        //     },
-        //     {
-        //       key: 'acceleration',
-        //       type: 'TextSliderComponent',
-        //       props: {
-        //         prefix: 'Acceleration',
-        //         postfix: '%',
-        //         min: 0,
-        //         max: 100
-        //       }
-        //     },
-        //     {
-        //       key: 'blending',
-        //       type: 'CheckBoxComponent',
-        //       props: {
-        //         prefix: 'Blending'
-        //       },
-        //       hasChild: true,
-        //       children: [
-        //         {
-        //           key: 'Blending',
-        //           type: 'TextSliderComponent',
-        //           props: {
-        //             prefix: 'Blending Radius',
-        //             postfix: 'mm',
-        //             min: 0,
-        //             max: 100
-        //           }
-        //         }
-        //       ]
-        //     }
-        //   ]
-        // },
-        // {
-        //   name: 'MoveCircular',
-        //   customClickAction: 'customClickAction',
-        //   left_icon: 'icon_move_circular.svg',
-        //   right_icon: 'drag.svg',
-        //   leftIconBackgroundColor: '#537190',
-        //   payload: {
-        //     name: '',
-        //     description: '',
-        //     points: [],
-        //     speed: 50,
-        //     cceleration: 50
-        //   },
-        //   components: [
-        //     {
-        //       key: 'name',
-        //       type: 'TextInputComponent',
-        //       label: 'Name',
-        //       hint: 'Enter name..'
-        //     },
-        //     {
-        //       key: 'description',
-        //       type: 'TextAreaComponent',
-        //       header: 'Description'
-        //     },
-        //     {
-        //       key: 'points',
-        //       type: 'DropZoneComponent',
-        //       header: 'Points'
-        //     },
-        //     {
-        //       key: 'speed',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Speed',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     },
-        //     {
-        //       key: 'acceleration',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Acceleration',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     }
-        //   ]
-        // },
-        // {
-        //   name: 'MoveComposite',
-        //   customClickAction: 'customClickAction',
-        //   left_icon: 'icon_move_circular.svg',
-        //   right_icon: 'drag.svg',
-        //   leftIconBackgroundColor: '#537190',
-        //   payload: {
-        //     name: '',
-        //     description: '',
-        //     points: [],
-        //     speed: 50,
-        //     cceleration: 50
-        //   },
-        //   components: [
-        //     {
-        //       key: 'name',
-        //       type: 'TextInputComponent',
-        //       label: 'Name',
-        //       hint: 'Enter name..'
-        //     },
-        //     {
-        //       key: 'description',
-        //       type: 'TextAreaComponent',
-        //       header: 'Description'
-        //     },
-        //     {
-        //       key: 'points',
-        //       type: 'DropZoneComponent',
-        //       header: 'Points'
-        //     },
-        //     {
-        //       key: 'speed',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Speed',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     },
-        //     {
-        //       key: 'acceleration',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Acceleration',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     }
-        //   ]
-        // },
-        // {
-        //   name: 'MoveRecordedPath',
-        //   customClickAction: 'customClickAction',
-        //   left_icon: 'icon_recorded_path.svg',
-        //   right_icon: 'drag.svg',
-        //   leftIconBackgroundColor: '#537190',
-        //   payload: {
-        //     name: '',
-        //     description: '',
-        //     points: [],
-        //     speed: 50,
-        //     cceleration: 50
-        //   },
-        //   components: [
-        //     {
-        //       key: 'name',
-        //       type: 'TextInputComponent',
-        //       label: 'Name',
-        //       hint: 'Enter name..'
-        //     },
-        //     {
-        //       key: 'description',
-        //       type: 'TextAreaComponent',
-        //       header: 'Description'
-        //     },
-        //     {
-        //       key: 'points',
-        //       type: 'DropZoneComponent',
-        //       header: 'Points'
-        //     },
-        //     {
-        //       key: 'speed',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Speed',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     },
-        //     {
-        //       key: 'acceleration',
-        //       type: 'TextSliderComponent',
-        //       prefix: 'Acceleration',
-        //       postfix: '%',
-        //       min: 0,
-        //       max: 100
-        //     }
-        //   ]
-        // }
       ],
       currentComponent: 'DropZone',
       componentProps: {
-        components: {}
+        form: {}
       },
       programHeaderProperties: {
         header: 'Drop Zone',
-        customClickAction: 'customClickAction',
         left_icon: leftIcon,
         right_icon: rightIcon,
         leftIconBackgroundColor: '#537190'
       },
       programHeaderDragProperties: {
         header: 'Drag Zone',
-        customClickAction: 'customClickAction',
         left_icon: leftIcon,
         right_icon: rightIcon,
         leftIconBackgroundColor: '#537190'
@@ -367,7 +403,7 @@ export default {
       return require(`@/assets/${fileName}`)
     },
     loadJson(program) {
-      this.componentProps.components = program
+      this.componentProps.form = program
       this.currentComponent = 'FormComponent'
     }
   }

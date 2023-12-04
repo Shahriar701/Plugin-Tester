@@ -15,7 +15,11 @@
       <div v-for="(program, index) in programList" :key="index">
         <ProgramHeaderComponent
           :header="program.name"
-          :customClickAction="() => customClickAction(program)"
+          :customClickAction="
+            () => {
+              customClickAction(program)
+            }
+          "
           :leftIcon="loadIcon(program.left_icon)"
           :rightIcon="loadIcon(program.right_icon)"
           :leftIconBackgroundColor="program.leftIconBackgroundColor"
@@ -50,6 +54,7 @@ export default {
       return require(`@/assets/${fileName}`)
     },
     customClickAction(program) {
+      console.log('custom click action')
       this.$emit('load-json', program)
     },
 
