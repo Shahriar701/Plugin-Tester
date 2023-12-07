@@ -63,14 +63,15 @@ export default {
               type: 'TextInputComponent',
               props: {
                 label: 'Name',
-                hint: 'Enter name..'
+                hint: 'Testing 123'
               }
             },
             {
               key: 'description',
               type: 'TextAreaComponent',
               props: {
-                header: 'Description'
+                header: 'Description',
+                hint: 'Testing 124'
               }
             },
             {

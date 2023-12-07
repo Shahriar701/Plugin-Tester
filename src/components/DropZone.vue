@@ -1,10 +1,10 @@
 <template>
   <div class="drop-zone-scopped">
     <div class="text-input">
-      <TextInputComponent text="Name" />
+      <TextInputComponent label="Name" hint="Enter Name" />
     </div>
     <div class="description-accordion">
-      <TextAreaComponent text="Description" />
+      <TextAreaComponent header="Description" hint="Description..." />
     </div>
     <div class="flex-grow">
       <DropZoneComponent> </DropZoneComponent>
